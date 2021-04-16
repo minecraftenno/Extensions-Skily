@@ -4,10 +4,7 @@ const Discord = require("discord.js");
 // Paramètres
 const client = new Discord.Client({ ws: { properties: { $browser: "Discord iOS" }} }); // Enlever tout la ligne apres "Discord.Client" si vous ne voulez pas que votre bot s'affiche en mode mobile
 const prefix = "Prefix de votre bot";
-const botname = "Nom de votre bot"
-const botid = `L'id de votre bot`
 const token = "Token de votre bot";
-const supportserver = "Le serveur support de votre bot" // Si vous n'en avez pas, merci de mettre votre site !
 
 // Envoie un message dès que le bot est bien allumé
 client.on("ready", () => {
