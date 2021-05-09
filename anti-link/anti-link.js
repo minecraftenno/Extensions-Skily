@@ -11,7 +11,7 @@ client.on("ready", () => {
     console.log("L'extension à bien été mise au bot " + client.user.username + " !");
 });
 
-// is_url function start
+// Verification du lien
 function is_url(str) {
     let regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
     if(regexp.test(str)) {
@@ -20,14 +20,8 @@ function is_url(str) {
       return false;
     }
     
-  }
-
-  
+  }  
 // STOP
-    
-client.on('guildMemberAdd', member => {
-  member.guild.channels.cache.get("819883054314684447").send(`${member} a rejoint le serveur. Nous sommes désormais ${member.guild.memberCount} ! 🎉`);
-})
 
 client.on("message", message => {
     if(message.author.bot) return;
@@ -40,8 +34,7 @@ client.on("message", message => {
             "Désolé, mais le créateur de " + message.guild.name +" à désactiver les liens sur ce serveur"
           );
     }
-
-
+    
 if (!message.member.hasPermission('MANAGE_MESSAGES')) {
     // Verifie si le message envoyé à un lien à l'interieur
     if(is_url(message.content) === true) {
