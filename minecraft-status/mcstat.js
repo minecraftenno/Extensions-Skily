@@ -1,3 +1,5 @@
+// Pour utiliser cette extension allez a la racine de votre bot et faites 'npm i minecraft-server-util@^3.4.2'
+// Dès que c'est fait revenez sur ce fichier et configurer l'extension 😉
 const util = require('minecraft-server-util');
 const Discord = require('discord.js');
 const client = new Discord.Client();
