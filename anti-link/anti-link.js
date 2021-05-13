@@ -5,6 +5,7 @@ const Discord = require("discord.js");
 const client = new Discord.Client({ ws: { properties: { $browser: "Discord iOS" }} }); // Enlever tout la ligne apres "Discord.Client" si vous ne voulez pas que votre bot s'affiche en mode mobile
 const prefix = "Prefix de votre bot";
 const token = "Token de votre bot";
+const logMessage = "L'id du salon des logs messages"
 
 // Envoie un message dès que le bot est bien allumé
 client.on("ready", () => {
@@ -27,14 +28,18 @@ client.on("message", message => {
     if(message.author.bot) return;
     if(message.channel.type == "dm") return;
     const regex = /(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li|club)|discordapp\.com\/invite|discord\.com\/invite)\/.+[a-z]/gi;
-
+    const log = new Discord.MessageEmbed()
+    .setColor("#404040")
+    .setTitle("Message supprimé")
+    .setDescription(message.author.username + ' à essayer d\'envoyer un lien et il a bien été supprimé.\nLien envoyé : '+ message.content)
+    .setTimestamp()
+    .setFooter(client.user.username+" Bot Modération fun etc !")
     if (!message.member.hasPermission('MANAGE_MESSAGES')) {
-      if (regex.exec(message.content)) 
-          message.channel.send(
-            "Désolé, mais le créateur de " + message.guild.name +" à désactiver les liens sur ce serveur"
-          );
+      if (regex.exec(message.content))
+      client.channels.cache.get(logMessage).send(log)
     }
-    
+
+
 if (!message.member.hasPermission('MANAGE_MESSAGES')) {
     // Verifie si le message envoyé à un lien à l'interieur
     if(is_url(message.content) === true) {
