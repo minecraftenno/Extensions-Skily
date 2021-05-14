@@ -59,4 +59,4 @@ function ipCommand(message) {
     message.reply(response);
 }
 
-client.login('token');
+client.login(token);
